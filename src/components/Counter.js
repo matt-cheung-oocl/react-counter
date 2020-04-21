@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { INIT_COUNTER_VALUE } from '../constants/constants'
+import { COUNTER_INCREMENT } from '../constants/constants'
+import { COUNTER_DECREMENT } from '../constants/constants'
 
 export default class Counter extends Component {
     constructor(props) {
@@ -8,23 +11,35 @@ export default class Counter extends Component {
         this.onDecrease = this.onDecrease.bind(this);
 
         this.state = {
-            number: 0,
+            value: INIT_COUNTER_VALUE,
         };
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.number !== prevProps.number) {
+            this.setState({value: INIT_COUNTER_VALUE});
+        }
+        if(this.state.value > prevState.value) {
+            this.props.onCalculate(COUNTER_INCREMENT);
+        }
+        else if(this.state.value < prevState.value) {
+            this.props.onCalculate(COUNTER_DECREMENT);
+        }
+    }
+
     onIncrease() {
-        this.setState((prevState) => ({number: prevState.number + 1}));
+        this.setState((prevState) => ({value: prevState.value + COUNTER_INCREMENT}));
     }
 
     onDecrease() {
-        this.setState((prevState) => ({number: prevState.number - 1}));
+        this.setState((prevState) => ({value: prevState.value + COUNTER_DECREMENT}));
     }
 
     render() {
         return (
             <div>    
                 <button onClick = {this.onDecrease}>-</button>
-                <span>{this.state.number}</span>
+                <span>{this.state.value}</span>
                 <button onClick = {this.onIncrease}>+</button>
             </div>
         )
