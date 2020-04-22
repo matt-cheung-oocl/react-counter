@@ -14,28 +14,28 @@ export default class Counter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.number !== prevProps.number) {
-            this.setState({value: INIT_COUNTER_VALUE});
+        if (this.props.number !== prevProps.number) {
+            this.setState({ value: INIT_COUNTER_VALUE });
         }
-        if(this.state.value != prevState.value) {
+        if (this.state.value != prevState.value) {
             this.props.onCalculate(this.state.value - prevState.value);
         }
     }
 
     onIncrease() {
-        this.setState((prevState) => ({value: prevState.value + COUNTER_INCREMENT}));
+        this.setState((prevState) => ({ value: prevState.value + COUNTER_INCREMENT }));
     }
 
     onDecrease() {
-        this.setState((prevState) => ({value: prevState.value + COUNTER_DECREMENT}));
+        this.setState((prevState) => ({ value: prevState.value + COUNTER_DECREMENT }));
     }
 
     render() {
         return (
-            <div>    
-                <button onClick = {this.onDecrease}>-</button>
+            <div>
+                <button onClick={this.onDecrease}>-</button>
                 <span>{this.state.value}</span>
-                <button onClick = {this.onIncrease}>+</button>
+                <button onClick={this.onIncrease}>+</button>
             </div>
         )
     }
