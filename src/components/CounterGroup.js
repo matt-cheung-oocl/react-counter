@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Counter from './Counter'
-import { INIT_COUNTER_SIZE } from '../constants/constants'
-import { INIT_COUNTER_GROUP_SUM } from '../constants/constants'
+import { INIT_COUNTER_SIZE, INIT_COUNTER_GROUP_SUM } from '../constants/constants'
 
 export default class CounterGroup extends Component {
     constructor(props) {
@@ -26,7 +25,9 @@ export default class CounterGroup extends Component {
 
     onChange(event) {
         const value = event.target.value;
-        this.setState({size: value.length > 0 ? parseInt(value) : 0});
+        this.setState({
+            size: value.length > 0 ? parseInt(value) : INIT_COUNTER_SIZE, 
+            sum: INIT_COUNTER_GROUP_SUM});
     }
 
     render() {

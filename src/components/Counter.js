@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { INIT_COUNTER_VALUE } from '../constants/constants'
-import { COUNTER_INCREMENT } from '../constants/constants'
-import { COUNTER_DECREMENT } from '../constants/constants'
+import { INIT_COUNTER_VALUE, COUNTER_INCREMENT, COUNTER_DECREMENT } from '../constants/constants'
 
 export default class Counter extends Component {
     constructor(props) {
@@ -19,11 +17,8 @@ export default class Counter extends Component {
         if(this.props.number !== prevProps.number) {
             this.setState({value: INIT_COUNTER_VALUE});
         }
-        if(this.state.value > prevState.value) {
-            this.props.onCalculate(COUNTER_INCREMENT);
-        }
-        else if(this.state.value < prevState.value) {
-            this.props.onCalculate(COUNTER_DECREMENT);
+        if(this.state.value != prevState.value) {
+            this.props.onCalculate(this.state.value - prevState.value);
         }
     }
 
