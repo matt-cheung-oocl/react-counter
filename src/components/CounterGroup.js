@@ -5,6 +5,8 @@ import {
   INIT_COUNTER_SIZE,
   INIT_COUNTER_GROUP_SUM
 } from "../constants/constants";
+import { Input, Row, Card, Col, Space } from "antd";
+import "antd/dist/antd.css";
 
 export default class CounterGroup extends Component {
   constructor(props) {
@@ -48,27 +50,41 @@ export default class CounterGroup extends Component {
   render() {
     let counters = this.initArray(this.state.size);
     return (
-      <div>
+      <Space direction="vertical">
         <form>
-          <fieldset>
-            Generate
-            <input
+          <Card
+            title="Counter by React.js"
+            style={{ height: 160, background: "grey", color: "white" }}
+          >
+            Generate{" "}
+            <Input
+              size="small"
+              style={{ width: "10%" }}
               onChange={this.onChange}
               type="text"
               value={this.state.size}
-            />
+            />{" "}
             Counters
-            <p>Sum of all counters: {this.state.sum}</p>
-          </fieldset>
+            <p>
+              Sum of All Counters:{" "}
+              <b>
+                <i>{this.state.sum}</i>
+              </b>
+            </p>
+          </Card>
         </form>
         {counters.map(value => (
-          <Counter
-            key={value}
-            number={this.state.number}
-            onCalculate={this.onCalculate}
-          />
+          <Row justify="space-around" align="middle">
+            <Col span={4}>
+              <Counter
+                key={value}
+                number={this.state.number}
+                onCalculate={this.onCalculate}
+              />
+            </Col>
+          </Row>
         ))}
-      </div>
+      </Space>
     );
   }
 }

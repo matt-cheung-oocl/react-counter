@@ -4,6 +4,8 @@ import {
   COUNTER_INCREMENT,
   COUNTER_DECREMENT
 } from "../constants/constants";
+import { Button, Space, Tag } from "antd";
+import "antd/dist/antd.css";
 
 export default class Counter extends Component {
   constructor(props) {
@@ -40,11 +42,15 @@ export default class Counter extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.onDecrease}>-</button>
-        <span>{this.state.value}</span>
-        <button onClick={this.onIncrease}>+</button>
-      </div>
+      <Space>
+        <Button shape="circle" type="default" onClick={this.onDecrease}>
+          -
+        </Button>
+        <Space>{this.state.value}</Space>
+        <Button shape="circle" type="primary" onClick={this.onIncrease}>
+          +
+        </Button>
+      </Space>
     );
   }
 }
