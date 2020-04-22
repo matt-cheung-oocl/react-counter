@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
-import { INIT_COUNTER_VALUE, COUNTER_INCREMENT, COUNTER_DECREMENT } from '../constants/constants'
+import React, { Component } from "react";
+import {
+  INIT_COUNTER_VALUE,
+  COUNTER_INCREMENT,
+  COUNTER_DECREMENT
+} from "../constants/constants";
 
 export default class Counter extends Component {
   constructor(props) {
@@ -9,7 +13,7 @@ export default class Counter extends Component {
     this.onDecrease = this.onDecrease.bind(this);
 
     this.state = {
-      value: INIT_COUNTER_VALUE,
+      value: INIT_COUNTER_VALUE
     };
   }
 
@@ -23,11 +27,15 @@ export default class Counter extends Component {
   }
 
   onIncrease() {
-    this.setState((prevState) => ({ value: prevState.value + COUNTER_INCREMENT }));
+    this.setState(prevState => ({
+      value: prevState.value + COUNTER_INCREMENT
+    }));
   }
 
   onDecrease() {
-    this.setState((prevState) => ({ value: prevState.value + COUNTER_DECREMENT }));
+    this.setState(prevState => ({
+      value: prevState.value + COUNTER_DECREMENT
+    }));
   }
 
   render() {
@@ -37,6 +45,6 @@ export default class Counter extends Component {
         <span>{this.state.value}</span>
         <button onClick={this.onIncrease}>+</button>
       </div>
-    )
+    );
   }
 }
